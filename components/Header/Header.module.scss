@@ -1,0 +1,22 @@
+.header {
+  .container {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+
+    .left {
+      display: flex;
+      flex: 1;
+      justify-content: flex-start;
+    }
+
+    .right {
+      display: flex;
+      flex: 1;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+  }
+}

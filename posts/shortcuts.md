@@ -1,0 +1,13 @@
+---
+title: "Crea tus propios shortcuts en VSCode"
+author: "Luis García"
+category: "VSCode"
+date: "2022-09-30"
+bannerImage: "url-to-image.png"
+tags:
+    - VSCode, shortcuts
+---
+
+## Crea tus propios shortcuts en VSCode
+
+This is sample content. The section above is called Frontmatter where we can add post metadata like title and author. You can add as little or as many properties in the frontmatter using YAML syntax.
