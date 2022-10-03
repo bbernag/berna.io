@@ -1,0 +1,34 @@
+.post {
+  .container {
+    margin: auto;
+    max-width: 675px;
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0.5rem 0;
+    }
+  }
+
+  .title::first-letter {
+    font-size: 2.875rem;
+  }
+
+  .subtitleContainer {
+    display: flex;
+    // justify-content: flex-end;
+
+    .subtitle {
+      font-size: 0.875rem;
+      color: lightgray;
+    }
+  }
+
+  .content {
+    margin-top: 2rem;
+  }
+}

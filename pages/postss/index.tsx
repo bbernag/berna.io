@@ -1,8 +1,9 @@
 import fs from "fs";
+import path from "path";
 import matter from "gray-matter";
 // import Image from "next/image";
 import Link from "next/link";
-import Header from "../../components/Header";
+// import Header from "../../components/Header";
 import Layout from "../../components/Layout";
 import styles from "./Posts.module.scss";
 
@@ -29,7 +30,10 @@ type IBlog = {
   posts: IPost[];
 };
 
-export default function Blog({ posts }: IBlog) {
+export default function Blog({ posts, ...rest }: IBlog) {
+  console.log("rest", rest);
+
+  return null;
   return (
     <Layout>
       <main className={styles.posts}>
@@ -58,26 +62,29 @@ export default function Blog({ posts }: IBlog) {
 }
 
 //Generating the Static Props for the Blog Page
+// export async function getStaticProps() {
+// const root = path.join(process.cwd(), "/pages/posts");
+// const listing = await fs.promises.readdir(root);
+
+// const posts = listing.map((post) => {
+//   return post.replace(".mdx", "");
+// });
+
+// return { props: { items: posts, posts, listing: posts } };
+// }
+
 export async function getStaticProps() {
-  // get list of files from the posts folder
-  const files = fs.readdirSync("posts");
+  const markdownWithMeta = fs.readFileSync(
+    path.join("pages/posts/post.mdx"),
+    "utf-8"
+  );
 
-  // get frontmatter & slug from each post
-  const posts = files.map((fileName) => {
-    const slug = fileName.replace(".md", "");
-    const readFile = fs.readFileSync(`posts/${fileName}`, "utf-8");
-    const { data: frontmatter } = matter(readFile);
+  const { data: frontMatter, content } = matter(markdownWithMeta);
 
-    return {
-      slug,
-      frontmatter,
-    };
-  });
-
-  // Return the pages static props
   return {
     props: {
-      posts,
+      frontMatter,
+      content,
     },
   };
 }

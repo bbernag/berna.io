@@ -5,6 +5,7 @@ import md from "markdown-it";
 import { IPost, IFrontMatter } from "./index";
 import Layout from "../../components/Layout";
 import styles from "./Slug.module.scss";
+import Head from "next/head";
 
 type PostProps = {
   frontmatter: IFrontMatter;
@@ -20,24 +21,32 @@ export default function Post({ frontmatter, content }: PostProps) {
   }, []);
 
   return (
-    <Layout>
-      <main className={styles.post}>
-        <div className={styles.container}>
-          <div>
-            <h1 className={styles.title}>{title}</h1>
-            <div className={styles.subtitleContainer}>
-              <span className={styles.subtitle}>
-                {author} || {date}
-              </span>
+    <>
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/dracula-prism/dist/css/dracula-prism.css"
+        />
+      </Head>
+      <Layout>
+        <main className={styles.post}>
+          <div className={styles.container}>
+            <div>
+              <h1 className={styles.title}>{title}</h1>
+              <div className={styles.subtitleContainer}>
+                <span className={styles.subtitle}>
+                  {author} || {date}
+                </span>
+              </div>
             </div>
+            <div
+              dangerouslySetInnerHTML={{ __html: md().render(content) }}
+              className={styles.content}
+            />
           </div>
-          <div
-            dangerouslySetInnerHTML={{ __html: md().render(content) }}
-            className={styles.content}
-          />
-        </div>
-      </main>
-    </Layout>
+        </main>
+      </Layout>
+    </>
   );
 }
 

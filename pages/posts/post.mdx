@@ -1,0 +1,24 @@
+import Header from "../components/Header";
+import PostLayout from "../Layouts/Post";
+
+export const meta = {
+  title: "This is an example post",
+  author: "Luis García",
+  category: "example",
+  date: "2022-03-13",
+  bannerImage: "url-to-image.png",
+  slug: "shortcuts",
+  tags: "",
+};
+
+## This is an example blog postssstt
+
+This is sample content. The section above is called Frontmatter where we can add post metadata like title and author. You can add as little or as many properties in the frontmatter using YAML syntax.
+
+```js
+console.log("Hola", hola);
+```
+
+export default ({ children }) => <PostLayout meta={meta}>{children}</PostLayout
+
+>
