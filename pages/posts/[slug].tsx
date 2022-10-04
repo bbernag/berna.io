@@ -1,23 +1,20 @@
 import React from "react";
 import fs from "fs";
-import matter from "gray-matter";
-import md from "markdown-it";
-import { IPost, IFrontMatter } from "./index";
 import Layout from "../../components/Layout";
 import styles from "./Slug.module.scss";
+import getPost from "../../helpers/getPost";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
+import Code from "../../components/Code";
+import IPost from "@types/Post";
 
-type PostProps = {
-  frontmatter: IFrontMatter;
-  content: string;
+type IPostProps = {
+  data: IPost;
+  content: Record<string, any>;
 };
 
-// The page for each post
-export default function Post({ frontmatter, content }: PostProps) {
-  const { title, author, category, date, bannerImage, tags } = frontmatter;
-
-  React.useEffect(() => {
-    console.log("mounted");
-  }, []);
+const Post = ({ content, data }: IPostProps) => {
+  const { title, author, date } = data;
 
   return (
     <Layout>
@@ -31,26 +28,24 @@ export default function Post({ frontmatter, content }: PostProps) {
               </span>
             </div>
           </div>
-          <div
-            dangerouslySetInnerHTML={{ __html: md().render(content) }}
-            className={styles.content}
-          />
+          <MDXRemote {...content} components={{ code: Code }} />
         </div>
       </main>
     </Layout>
   );
-}
+};
 
-// Generating the paths for each post
+// // Generating the paths for each post
 export async function getStaticPaths() {
   // Get list of all files from our posts directory
   const files = fs.readdirSync("posts");
   // Generate a path for each one
   const paths = files.map((fileName) => ({
     params: {
-      slug: fileName.replace(".md", ""),
+      slug: fileName.replace(".mdx", ""),
     },
   }));
+
   // return list of paths
   return {
     paths,
@@ -64,12 +59,15 @@ export async function getStaticProps({
 }: {
   params: { slug: string };
 }) {
-  const fileName = fs.readFileSync(`posts/${slug}.md`, "utf-8");
-  const { data: frontmatter, content } = matter(fileName);
+  const post = await getPost(slug);
+  const mdxSource = await serialize(post.content);
+
   return {
     props: {
-      frontmatter,
-      content,
+      data: post.data,
+      content: mdxSource,
     },
   };
 }
+
+export default Post;

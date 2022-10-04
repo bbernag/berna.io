@@ -1,29 +1,8 @@
-import fs from "fs";
-import matter from "gray-matter";
-// import Image from "next/image";
 import Link from "next/link";
-import Header from "../../components/Header";
-import Layout from "../../components/Layout";
+import Layout from "@components/Layout";
 import styles from "./Posts.module.scss";
-
-// The Blog Page Content
-
-export type IFrontMatter = {
-  title: string;
-  author: string;
-  category: string;
-  date: string;
-  bannerImage: string;
-  tags: string[];
-};
-
-export type IPost = {
-  title: string;
-  slug: string;
-  author: string;
-  date: string;
-  frontmatter: IFrontMatter;
-};
+import getAllPosts from "@helpers/getAllPosts";
+import IPost from "@types/Post";
 
 type IBlog = {
   posts: IPost[];
@@ -35,12 +14,8 @@ export default function Blog({ posts }: IBlog) {
       <main className={styles.posts}>
         <div className={styles.container}>
           {posts.map((post) => {
-            //extract slug and frontmatter
-            const { slug, frontmatter } = post;
-            //extract frontmatter properties
-            const { title, author, date } = frontmatter;
+            const { title, author, date, slug } = post;
 
-            //JSX for individual blog listing
             return (
               <article key={title} className="mt-1">
                 <Link href={`/posts/${slug}`}>
@@ -57,27 +32,8 @@ export default function Blog({ posts }: IBlog) {
   );
 }
 
-//Generating the Static Props for the Blog Page
 export async function getStaticProps() {
-  // get list of files from the posts folder
-  const files = fs.readdirSync("posts");
+  const posts = getAllPosts();
 
-  // get frontmatter & slug from each post
-  const posts = files.map((fileName) => {
-    const slug = fileName.replace(".md", "");
-    const readFile = fs.readFileSync(`posts/${fileName}`, "utf-8");
-    const { data: frontmatter } = matter(readFile);
-
-    return {
-      slug,
-      frontmatter,
-    };
-  });
-
-  // Return the pages static props
-  return {
-    props: {
-      posts,
-    },
-  };
+  return { props: { posts } };
 }

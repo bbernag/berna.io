@@ -1,0 +1,25 @@
+.code {
+  position: relative;
+
+  .extensionTag {
+    position: absolute;
+    top: -25px;
+    right: 0;
+    padding: 5px;
+    background-color: black;
+    border-radius: 5px;
+    border-width: 0.2px;
+    border-color: lightgray;
+    border-top: 0.1px solid;
+    border-right: 0.1px solid;
+    border-left: 0.1px solid;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .copyButton {
+    position: absolute;
+    bottom: -22px;
+    right: 0;
+  }
+}
