@@ -1,0 +1,17 @@
+.main {
+  .personalCardWrapper {
+    margin-top: 3rem;
+  }
+
+  .postList {
+    margin: 4rem 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .main {
+    .personalCardWrapper {
+      margin-top: 1rem;
+    }
+  }
+}

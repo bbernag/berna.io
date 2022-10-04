@@ -2,7 +2,7 @@ import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
 
-const files = fs.readdirSync(path.join("posts"));
+// const files = fs.readdirSync(path.join("posts"));
 
 function getAllPosts() {
   const files = fs.readdirSync(path.join("posts"));
@@ -14,6 +14,7 @@ function getAllPosts() {
       "utf8"
     );
     const { data } = matter(fileContents);
+
     return {
       ...data,
       slug,

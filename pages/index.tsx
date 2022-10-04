@@ -2,12 +2,13 @@ import Head from "next/head";
 import Layout from "@components/Layout";
 import getAllPosts from "@helpers/getAllPosts";
 import IPost from "@types/Post";
-import styles from "../styles/Home.module.css";
-import Link from "next/link";
+import PersonalCard from "@components/PersonalCard/PersonalCard";
+import PostPreview from "@components/PostPreview/PostPreview";
+import styles from "./Main.module.scss";
 
 const Home = ({ posts }: { posts: IPost[] }) => {
   return (
-    <div className={styles.container}>
+    <div className={styles.main}>
       <Head>
         <title>Berna.io</title>
         <meta
@@ -17,15 +18,12 @@ const Home = ({ posts }: { posts: IPost[] }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <div>
+        <div className={styles.personalCardWrapper}>
+          <PersonalCard />
+        </div>
+        <div className={styles.postList}>
           {posts.map((post) => {
-            return (
-              <div key={post.title}>
-                <Link href={`/posts/${post.slug}`}>
-                  <h1>{post.title}</h1>
-                </Link>
-              </div>
-            );
+            return <PostPreview {...post} key={post.title} />;
           })}
         </div>
       </Layout>

@@ -1,0 +1,17 @@
+.main {
+  margin: 0 auto;
+  max-width: 675px;
+
+  overflow-y: scroll;
+
+  .postList {
+    margin: 2rem 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .main {
+    max-width: 100%;
+    padding: 1rem;
+  }
+}

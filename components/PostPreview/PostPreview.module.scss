@@ -1,0 +1,34 @@
+@import "/styles/variables.scss";
+
+.postPreview {
+  margin-top: 2.5rem;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin: 0;
+    color: color(text);
+    cursor: pointer;
+    // transition: .2s;
+
+    &:hover {
+      opacity: 0.5;
+      // transition: .2s;
+    }
+  }
+
+  .meta {
+    color: color(text-secondary);
+
+    span {
+      font-size: 0.875rem;
+    }
+  }
+  .description {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+  }
+}

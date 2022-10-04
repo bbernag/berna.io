@@ -1,7 +1,7 @@
 import React from "react";
 import fs from "fs";
 import Layout from "../../components/Layout";
-import styles from "./Slug.module.scss";
+import styles from "./Post.module.scss";
 import getPost from "../../helpers/getPost";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
@@ -18,7 +18,7 @@ const Post = ({ content, data }: IPostProps) => {
 
   return (
     <Layout>
-      <main className={styles.post}>
+      <div className={styles.post}>
         <div className={styles.container}>
           <div>
             <h1 className={styles.title}>{title}</h1>
@@ -30,7 +30,7 @@ const Post = ({ content, data }: IPostProps) => {
           </div>
           <MDXRemote {...content} components={{ code: Code }} />
         </div>
-      </main>
+      </div>
     </Layout>
   );
 };

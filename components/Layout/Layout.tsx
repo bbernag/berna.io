@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "../Header";
+import styles from "./Layout.module.scss";
 
 type ILayout = React.PropsWithChildren;
 
 function Layout({ children }: ILayout) {
   return (
-    <main>
-      <Header />
+    <main className={styles.main}>
+      {/* <Header /> */}
       {children}
     </main>
   );

@@ -1,5 +1,11 @@
 @tailwind utilities;
 
+:root {
+  --color-background: #191919;
+  --color-text: #bbbfca;
+  --color-text-secondary: #505050;
+}
+
 html,
 body {
   padding: 0;
@@ -15,6 +21,7 @@ a {
 
 * {
   box-sizing: border-box;
+  transition: 0.3s;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,7 +30,7 @@ a {
   }
 
   body {
-    color: white;
-    background: black;
+    color: var(--color-text);
+    background: var(--color-background);
   }
 }

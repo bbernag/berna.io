@@ -1,0 +1,25 @@
+.personalCard {
+  .content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .profilePicture {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 1px solid lightgray;
+      border-width: 1px;
+    }
+
+    .description {
+      p {
+        margin: 0 0 0.5rem 0;
+      }
+
+      :last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
