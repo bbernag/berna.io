@@ -1,0 +1,9 @@
+@import "/styles/variables.scss";
+
+.postMetaInfo {
+  color: color(text-secondary);
+
+  span {
+    font-size: 0.875rem;
+  }
+}

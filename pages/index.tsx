@@ -2,7 +2,7 @@ import Head from "next/head";
 import Layout from "@components/Layout";
 import getAllPosts from "@helpers/getAllPosts";
 import IPost from "@types/Post";
-import PersonalCard from "@components/PersonalCard/PersonalCard";
+import PersonalCard from "@components/PersonalCard";
 import PostPreview from "@components/PostPreview/PostPreview";
 import styles from "./Main.module.scss";
 

@@ -4,6 +4,7 @@ import Link from "next/link";
 import styles from "./PostPreview.module.scss";
 import dayjs from "dayjs";
 import DATE_FORMATS from "@helpers/dateFormats";
+import PostMetaInfo from "@components/PostMetaInfo";
 
 function PostPreview({ slug, title, author, date, description }: IPost) {
   return (
@@ -11,12 +12,7 @@ function PostPreview({ slug, title, author, date, description }: IPost) {
       <Link href={`/posts/${slug}`}>
         <h6 className={styles.title}>{title}</h6>
       </Link>
-      <div className={styles.meta}>
-        <span className={styles.author}>{author}</span>{" | "}
-        <span className={styles.date}>
-          {dayjs(date).format(DATE_FORMATS.LL)}
-        </span>
-      </div>
+      <PostMetaInfo author={author} date={date} />
       <div className={styles.description}>
         <span>{description}</span>
       </div>

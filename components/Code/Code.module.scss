@@ -1,25 +1,44 @@
+@import "/styles/variables.scss";
+
 .code {
   position: relative;
 
   .extensionTag {
+    &::before {
+      content: ".";
+    }
+
     position: absolute;
-    top: -25px;
+    top: -17px;
     right: 0;
-    padding: 5px;
-    background-color: black;
+    padding: 2px 10px;
+    background-color: color(snippet);
     border-radius: 5px;
     border-width: 0.2px;
-    border-color: lightgray;
-    border-top: 0.1px solid;
-    border-right: 0.1px solid;
-    border-left: 0.1px solid;
+    border-top: 1px solid color(snippet);
+    border-right: 1px solid color(snippet);
+    border-left: 1px solid color(snippet);
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
 
   .copyButton {
+    transition: 1s;
+    opacity: 0;
     position: absolute;
-    bottom: -22px;
+    bottom: -17px;
     right: 0;
+    cursor: pointer;
+    border-radius: 5px;
+    border-width: 0px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+  }
+
+  :hover {
+    .copyButton {
+      opacity: 1;
+      transition: 1s;
+    }
   }
 }

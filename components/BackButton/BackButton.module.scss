@@ -1,0 +1,26 @@
+@import "/styles/variables.scss";
+
+.back {
+  svg {
+    cursor: pointer;
+    color: color(text-secondary);
+    font-size: font(normal);
+    font-weight: bold;
+
+    &:hover {
+      animation: move 0.7s linear infinite alternate-reverse;
+    }
+  }
+}
+
+@keyframes move {
+  from {
+    // transform: translateX(0px);
+    opacity: .8;
+  }
+
+  to {
+    opacity: 0.4;
+    // transform: translateX(-10px);
+  }
+}

@@ -12,21 +12,13 @@
     margin: 0;
     color: color(text);
     cursor: pointer;
-    // transition: .2s;
+    display: inline;
 
     &:hover {
       opacity: 0.5;
-      // transition: .2s;
     }
   }
 
-  .meta {
-    color: color(text-secondary);
-
-    span {
-      font-size: 0.875rem;
-    }
-  }
   .description {
     margin-top: 0.5rem;
     font-size: 1rem;

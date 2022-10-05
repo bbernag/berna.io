@@ -4,6 +4,12 @@
   --color-background: #191919;
   --color-text: #bbbfca;
   --color-text-secondary: #505050;
+  --color-snippet: #1e1e1e;
+  --font-small: 0.5rem;
+  --font-medium: 0.875rem;
+  --font-normal: 1rem;
+  --font-large: 2rem;
+  --font-xlarge: 3rem;
 }
 
 html,
@@ -22,6 +28,11 @@ a {
 * {
   box-sizing: border-box;
   transition: 0.3s;
+}
+
+pre {
+  border-radius: 5px;
+  font-size: 1rem;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -7,6 +7,8 @@ import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 import Code from "../../components/Code";
 import IPost from "@types/Post";
+import PostMetaInfo from "@components/PostMetaInfo";
+import BackButton from "@components/BackButton";
 
 type IPostProps = {
   data: IPost;
@@ -20,12 +22,11 @@ const Post = ({ content, data }: IPostProps) => {
     <Layout>
       <div className={styles.post}>
         <div className={styles.container}>
-          <div>
+          <BackButton />
+          <div className={styles.postHeader}>
             <h1 className={styles.title}>{title}</h1>
             <div className={styles.subtitleContainer}>
-              <span className={styles.subtitle}>
-                {author} || {date}
-              </span>
+              <PostMetaInfo author={author} date={date} />
             </div>
           </div>
           <MDXRemote {...content} components={{ code: Code }} />

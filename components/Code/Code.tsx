@@ -1,20 +1,34 @@
 import React from "react";
-import Highlight, { defaultProps } from "prism-react-renderer";
+import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/vsDark";
-// import { Button, useClipboard } from "@chakra-ui/react";
+import useClipboard from "react-use-clipboard";
 import styles from "./Code.module.scss";
 
-function CopyButton() {
+interface ICode {
+  children: string;
+  className: string;
+}
+
+function CopyButton({ value }: { value: string }) {
+  const [isCopied, setCopied] = useClipboard(value, {
+    successDuration: 2000,
+  });
+
   return (
-    <button aria-label="Copy text" role="button" className={styles.copyButton}>
-      {/* {hasCopied ? "Copied" : "Copy"} */}
-      Hola
+    <button
+      aria-label="Copy text"
+      role="button"
+      className={styles.copyButton}
+      onClick={setCopied}
+    >
+      {isCopied ? "Copied ☑️" : "Copy"}
     </button>
   );
 }
 
-export default function Code({ children, className }) {
-  const language = className.replace(/language-/, "");
+const Code = ({ children, className }: ICode) => {
+  const language = className.replace(/language-/, "") as Language;
+
   return (
     <div className={styles.code}>
       <span className={styles.extensionTag}>{language}</span>
@@ -42,10 +56,12 @@ export default function Code({ children, className }) {
                 ))}
               </div>
             ))}
-            <CopyButton />
+            <CopyButton value={children.trim()} />
           </pre>
         )}
       </Highlight>
     </div>
   );
-}
+};
+
+export default Code;
