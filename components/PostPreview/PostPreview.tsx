@@ -1,5 +1,5 @@
 import React from "react";
-import IPost from "@types/Post";
+import IPost from "@interfaces/Post";
 import Link from "next/link";
 import styles from "./PostPreview.module.scss";
 import dayjs from "dayjs";

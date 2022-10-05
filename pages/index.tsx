@@ -1,9 +1,9 @@
 import Head from "next/head";
 import Layout from "@components/Layout";
 import getAllPosts from "@helpers/getAllPosts";
-import IPost from "@types/Post";
+import IPost from "@interfaces/Post";
 import PersonalCard from "@components/PersonalCard";
-import PostPreview from "@components/PostPreview/PostPreview";
+import PostPreview from "@components/PostPreview";
 import styles from "./Main.module.scss";
 
 const Home = ({ posts }: { posts: IPost[] }) => {
