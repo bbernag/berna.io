@@ -43,3 +43,9 @@
     margin-top: 2rem;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .post {
+    margin-top: 1rem;
+  }
+}
