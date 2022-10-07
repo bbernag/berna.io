@@ -9,6 +9,7 @@ import Code from "../../components/Code";
 import IPost from "@interfaces/Post";
 import PostMetaInfo from "@components/PostMetaInfo";
 import BackButton from "@components/BackButton";
+import Head from "next/head";
 
 type IPostProps = {
   data: IPost;
@@ -23,21 +24,26 @@ const Post = ({ content, data }: IPostProps) => {
   const { title, author, date } = data;
 
   return (
-    <Layout>
-      <div className={styles.post}>
-        <div className={styles.container}>
-          <BackButton />
-          <div className={styles.postHeader}>
-            <h1 className={styles.title}>{title}</h1>
-            <div className={styles.subtitleContainer}>
-              <PostMetaInfo author={author} date={date} />
+    <>
+      <Head>
+        <title>{title}</title>
+      </Head>
+      <Layout>
+        <div className={styles.post}>
+          <div className={styles.container}>
+            <BackButton />
+            <div className={styles.postHeader}>
+              <h1 className={styles.title}>{title}</h1>
+              <div className={styles.subtitleContainer}>
+                <PostMetaInfo author={author} date={date} />
+              </div>
             </div>
+            {/* @ts-ignore */}
+            <MDXRemote {...content} components={Components} />
           </div>
-          {/* @ts-ignore */}
-          <MDXRemote {...content} components={Components} />
         </div>
-      </div>
-    </Layout>
+      </Layout>
+    </>
   );
 };
 
